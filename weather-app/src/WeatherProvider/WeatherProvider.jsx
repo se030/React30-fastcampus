@@ -19,7 +19,7 @@ function WeatherProvider({children}) {
 
             const hourlyWeatherInfoAPI = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,daily&appid=c85dc6f46d7bcc2d8807e279332d20fc&units=metric`;
             const hourlyWeatherInfo = await fetch(hourlyWeatherInfoAPI);
-            const {hourly} = await hourlyWeatherInfo.json();
+            const { hourly } = await hourlyWeatherInfo.json();
 
             setweatherInfo({
                 name, temp, humidity, weatherState, feels_like, speed, deg, hourly, sunset, sunrise, temp_max, temp_min
