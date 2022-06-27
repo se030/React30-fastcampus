@@ -4,8 +4,6 @@ import CurrentWeatherIcon from '../CurrentWeatherIcon/CurrentWeatherIcon'
 import { WeatherContext } from '../WeatherProvider/WeatherProvider'
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/scss'
-import 'swiper/scss/navigation'
 
 const formatXAxis = (data) => `${new Date(data*1000).getHours()}시`
 const CustomizedDot = ({payload, cx, cy}) => <CurrentWeatherIcon 

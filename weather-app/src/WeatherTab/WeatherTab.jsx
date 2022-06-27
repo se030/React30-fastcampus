@@ -2,6 +2,9 @@ import React from 'react'
 import { Box, Tabs, Tab } from "@mui/material"
 import { useState } from 'react'
 import WeatherGraph from '../WeatherGraph/WeatherGraph';
+import HumidityGraph from '../HumidityGraph/HumidityGraph';
+import 'swiper/scss'
+import 'swiper/scss/navigation'
 
 function TabPanel({children, value, index}) {
     return (
@@ -27,7 +30,7 @@ function WeatherTab() {
             <WeatherGraph />
         </TabPanel>
         <TabPanel value={value} index={1}>
-            2
+            <HumidityGraph />
         </TabPanel>
         <TabPanel value={value} index={2}>
             3
