@@ -13,8 +13,8 @@ const CustomizedLabel = ({x, y, value}) => <text
 function BarGraph({num}) {
     const {hourly} = useContext(WeatherContext);
     return <BarChart width={960} height={200}
-        data={hourly?.slice(num*12, (num+1)*12).map(({dt,humidity}) => ({dt, humidity}))}
-        margin={{top:30, right:30, left:30, bottom: 10}}
+        data={hourly?.slice(num*12, (num+1)*12).map(({dt, humidity}) => ({dt, humidity}))}
+        margin={{top:30, right:30, left:30, bottom:10}}
     >
         <XAxis dataKey="dt" fontSize={15} tickFormatter={formatXAxis} />
         <Bar dataKey="humidity" fill="#2c6cff" isAnimationActive={false} label={CustomizedLabel} />

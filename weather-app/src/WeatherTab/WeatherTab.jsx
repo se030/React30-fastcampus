@@ -5,6 +5,7 @@ import WeatherGraph from '../WeatherGraph/WeatherGraph';
 import HumidityGraph from '../HumidityGraph/HumidityGraph';
 import 'swiper/scss'
 import 'swiper/scss/navigation'
+import WindGraph from '../WindGraph/WindGraph';
 
 function TabPanel({children, value, index}) {
     return (
@@ -33,7 +34,7 @@ function WeatherTab() {
             <HumidityGraph />
         </TabPanel>
         <TabPanel value={value} index={2}>
-            3
+            <WindGraph />
         </TabPanel>
     </Box>
   )
