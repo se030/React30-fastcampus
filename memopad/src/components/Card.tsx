@@ -11,6 +11,9 @@ const CardContainer = styled.div`
     font-size: 24px;
     position: relative;
     cursor: pointer;
+    :hover {
+        transform: scale(1.05);
+    }
 `
 const DeleteButton = styled.div`
     position: absolute;

@@ -4,6 +4,7 @@ import Card from './components/Card';
 import Edit from './components/Edit';
 import Memo from './interfaces/Memo';
 import Cookies from 'js-cookie';
+import { BsTrash } from 'react-icons/bs';
 
 const CardContainer = styled.div`
   display: flex;
@@ -12,7 +13,7 @@ const CardContainer = styled.div`
   gap: 40px;
   flex-wrap: wrap;
 `
-const AddButton = styled.div`
+const Button = styled.div`
     width: 80px;
     height: 80px;
     margin: 80px;
@@ -47,9 +48,15 @@ function App() {
     setselectedMemoIdx(undefined);
     setmode('edit')
   };
+  const onClear = () => {
+    setselectedMemoIdx(undefined);
+    setmemoList([]);
+    Cookies.remove("memo");
+    window.location.reload();
+  };
 
   return (
-    <>
+    <div style={{ width: "80%", margin: "auto" }}>
     {
       mode ==='view' &&
       <CardContainer>
@@ -65,14 +72,17 @@ function App() {
             Cookies.set("memo", JSON.stringify(memoList));
           }} />)
         }
-        <AddButton onClick={onAdd}>+</AddButton>
+        <div>
+          <Button onClick={onAdd}>+</Button>
+          <Button onClick={onClear}><BsTrash /></Button>
+        </div>
       </CardContainer>
     }
     {
       mode === 'edit' &&
       <Edit setMode={setmode} selectedMemoIdx={selectedMemoIdx} />
     }
-    </>
+    </div>
   );
 }
 
