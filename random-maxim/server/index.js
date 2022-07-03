@@ -62,7 +62,7 @@ app.put("/:id", (req, res) => {
     if (checkIndex(id, res)) {
         const { author, message } = req.body;
         if (!!author && !!message) {
-            data[idx] = {
+            data[parseInt(id)] = {
                 author: author,
                 message: message
             };
