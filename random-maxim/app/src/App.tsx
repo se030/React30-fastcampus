@@ -98,20 +98,20 @@ function App() {
           </Flex>
         </Flex>
         <Flex flexDirection="column" height="100vh" alignItems="center" justifyContent="center" paddingX="32px">
-          <Box fontSize="24px">
+          <Box fontSize={["18px", "24px", "24px"]}>
             오늘의 명언
           </Box>
           <Flex width="100%" height="160px"
             paddingX="16px" marginTop={["32px", "64px", "64px"]} marginBottom="16px"
             alignItems="center" justifyContent="center"
-            fontSize="48px" border="solid 1px #707070"
+            fontSize={["24px", "48px", "48px"]} border="solid 1px #707070"
             overflowX="scroll">
             {0 < error.length && error}
             <Box width="inherit" style={{ whiteSpace: "pre" }}>
               {nowData?.message}
             </Box>
           </Flex>
-          <Box fontSize="24px">
+          <Box fontSize={["18px", "24px", "24px"]}>
             {nowData?.author}
           </Box>
         </Flex>
