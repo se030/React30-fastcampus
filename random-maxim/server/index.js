@@ -1,5 +1,6 @@
 const express = require("express")
 const fs = require("fs")
+const cors = require("cors")
 
 const data = JSON.parse(fs.readFileSync("data.json", "utf-8"))
 
@@ -18,6 +19,7 @@ const checkIndex = (id, res) => {
 
 const app = express()
 app.use(express.json())     // body를 JSON으로 쓸 수 있게 해주는 미들웨어
+app.use(cors())
 
 app.get("/", (req, res) => {
     const { author, message } = req.query;
@@ -71,6 +73,6 @@ app.put("/:id", (req, res) => {
     }
 })
 
-app.listen(3000, () => {
+app.listen(8080, () => {
     console.log("running ...");
 })
