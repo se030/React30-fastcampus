@@ -1,5 +1,4 @@
 import { makeObservable, observable, action, autorun } from 'mobx';
-import _ from 'underscore';
 import { v1 as uuidv1 } from 'uuid';
 
 export class MemoModel {

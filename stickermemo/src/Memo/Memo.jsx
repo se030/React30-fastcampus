@@ -1,7 +1,7 @@
 import React, { useRef, useMemo, useEffect, useLayoutEffect, useCallback } from "react";
 import DragHandleIcon from "@mui/icons-material/DragHandle";
 import CloseIcon from "@mui/icons-material/Close";
-import "./Memo.scss";
+import "./Memo.css";
 import Draggable from '@seyoungkim/draggable';
 import { debounce } from "underscore";
 import { observer } from 'mobx-react';

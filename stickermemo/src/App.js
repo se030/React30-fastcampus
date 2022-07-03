@@ -21,7 +21,8 @@ function App({store}) {
           Delete={Delete}
         />)
       }
-      <AddIcon sx={{float:'right', backgroundColor:'#e4e4e4', borderRadius:'5px', 
+      <AddIcon sx={{position: 'absolute', top: '5px', right: '5px',
+        backgroundColor:'#e4e4e4', borderRadius:'5px', 
         cursor:'pointer', fontSize:'30px', border:'1px solid black'}}
         onClick={AddMemo} />
     </>
