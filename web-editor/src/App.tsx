@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ReactQuill, { Value } from 'react-quill';
 import 'react-quill/dist/quill.snow.css'
 import { GoCloudUpload } from 'react-icons/go'
@@ -35,15 +35,48 @@ function App() {
 
     ['image']
   ];
-  const [ post, setPost ] = useState<String[]>(() => {
+  const [ post, setPost ] = useState<string[]>(() => {
     try {
-      return JSON.parse(localStorage.getItem("post")?? '');
+      return JSON.parse(localStorage.getItem("post")?? '')
     } catch(e) {
-      localStorage.removeItem("post");
+      localStorage.removeItem("post")
       return [];
     }
   })
-  const [ content, setContent ] = useState<String>('')
+  const [ content, setContent ] = useState<string>(() => {
+    try {
+      return JSON.parse(localStorage.getItem("tempContent")?? '')
+    } catch(e) {
+      return ''
+    }
+  })
+
+  const ref = useRef('');
+  const hasChangedRef = useRef(false);
+  const changeCountRef = useRef(0);
+  useEffect(() => {
+    ref.current = content
+    hasChangedRef.current = true
+    changeCountRef.current++;
+    if (10 < changeCountRef.current) {
+      //console.log("change setItem")
+      localStorage.setItem("tempContent", JSON.stringify(ref.current))
+      hasChangedRef.current = false
+      changeCountRef.current = 0;
+    }
+  }, [content])
+  useEffect(() => {
+    const autosave = setInterval(() => {
+      //console.log('called autosave interval')
+      if (hasChangedRef.current) {
+        //console.log('interval setItem')
+        localStorage.setItem("tempContent", JSON.stringify(ref.current))
+        hasChangedRef.current = false
+        changeCountRef.current = 0;
+      }
+    }, 5000)
+    return () =>  clearInterval(autosave)
+  }, []);
 
   return <div>
     <div style={{
@@ -55,7 +88,7 @@ function App() {
       borderBottom: post.length? "2px solid #000" : "none"
     }}>
       <button onClick={() => {
-          if (content?.length === 0) {
+          if (content.length === 0) {
             alert("내용을 입력해주세요.")
             return;
           }
@@ -65,6 +98,7 @@ function App() {
             return p;
           })
           setContent('')
+          localStorage.removeItem("tempContent")
         }}
         style={buttonStyle} 
       >
