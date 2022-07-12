@@ -25,19 +25,10 @@ const Editor = (props: EditorProps) => {
     ['image']
   ];
 
-  return <div>
-    <div style={{
-      position: 'sticky',
-      top: '0px',
-      backgroundColor: 'white',
-      paddingBottom: '5px',
-    }}>
-      <ReactQuill
-        {...props}
-        modules={{ toolbar: toolbarOptions }}
-      />
-    </div>
-  </div>
+  return <ReactQuill
+    {...props}
+    modules={{ toolbar: toolbarOptions }}
+  />
 }
 
 export default Editor;

@@ -8,7 +8,8 @@ const Button = styled.button<BoxProps>`
     border: none;
     border-radius: 3px;
     font-size: 25px;
-    padding: 5px 20px;
+    line-height: 5px;
+    padding: 7px 20px;
     margin: 5px 5px 5px 0px;
     ${layout}
     ${color}
@@ -18,6 +19,10 @@ const Button = styled.button<BoxProps>`
     ${typography}
     ${space}
     ${position}
+    :hover {
+        color: #000;
+        background-color: #61dbfb;
+    }
 `
 
 export default Button;
