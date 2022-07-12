@@ -20,6 +20,62 @@ const MemoManagerPage = () => {
         setMemoList(data);
         setSelectedList(new Array(data.length).fill(false))
     }, []);
+    const handleSelect = useCallback((idx) => {
+        setSelectedList(prev => {
+            const cur = [...prev]
+            if (cur[idx] && allSelected.current) allSelected.current = false;
+            cur[idx] = !cur[idx]
+            if (cur.filter(selected => !selected).length === 0) allSelected.current = true;
+            return cur
+        })
+    }, [setSelectedList, allSelected]);
+    const handleSelectAll = () => {
+        setSelectedList(prev => {
+            const cur = [...prev];
+            if (cur.filter(selected => !selected).length) {
+                allSelected.current = true;
+                return cur.fill(true);
+            } else {
+                allSelected.current = false;
+                return cur.fill(false);
+            }
+        })
+    }
+    const handleDeleteSelected = () => {
+        if (window.confirm("선택된 메모들을 삭제합니다.")) {
+            if (selectedList.filter(selected => selected).length) {
+                (async () => {
+                    try {
+                        const req: Promise<AxiosPromise>[] = [];
+                        memoList.forEach((memo, idx) => {
+                            if (selectedList[idx]) req.push(axios.delete(`/${memo.idx}`))
+                        })
+                        await Promise.all(req)
+                        alert("삭제 완료")
+                        loadMemo();
+                    } catch (e) {
+                        alert("삭제 실패")
+                    }
+                })()
+            }
+            else alert("선택된 메모가 없습니다.")
+        }
+    }
+    const handleDeleteAll = () => {
+        if (window.confirm("모든 메모를 삭제합니다.")) {
+            (async () => {
+                try {
+                    const { data } = await axios.delete("/");
+                    alert("삭제 성공")
+                    setMemoList([]);
+                    setSelectedList(new Array(data.length).fill(false))
+                } catch (e) {
+                    alert(`삭제 실패
+                    ${(e as any).response.data.msg}`)
+                }
+            })()
+        }
+    }
 
     useEffect(() => {
         loadMemo();
@@ -31,47 +87,17 @@ const MemoManagerPage = () => {
                 <IoMdArrowBack />
             </Button>
             <Box>
-                <Button width="70px" onClick={() => setSelectedList(prev => {
-                    const cur = [...prev];
-                    if (cur.filter(selected => !selected).length) {
-                        allSelected.current = true;
-                        return cur.fill(true);
-                    } else {
-                        allSelected.current = false;
-                        return cur.fill(false);
-                    }
-                })}>
+                <Button width="70px" onClick={() => handleSelectAll()}>
                     <BsCheckAll />
-                    <br /><span style={{fontSize: "10px"}}>{`${allSelected.current? "unselect all":"select all"}`}</span>
+                    <br /><span style={{fontSize: "10px"}}>{
+                        `${allSelected.current? "unselect all":"select all"}`
+                    }</span>
                 </Button>
-                <Button width="70px" onClick={() => {
-                    if (window.confirm("선택된 메모들을 삭제합니다.")) {
-                        if (selectedList.filter(selected => selected).length) {
-                            (async () => {
-                                const req: Promise<AxiosPromise>[] = [];
-                                memoList.forEach((memo, idx) => {
-                                    if (selectedList[idx]) req.push(axios.delete(`/${memo.idx}`))
-                                })
-                                await Promise.all(req)
-                                alert("삭제 완료")
-                                loadMemo();
-                            })()
-                        }
-                        else alert("선택된 메모가 없습니다.")
-                    }
-                }}>
+                <Button width="70px" onClick={() => handleDeleteSelected()}>
                     <GoTrashcan />
                     <br /><span style={{fontSize: "10px"}}>delete selected</span>
                 </Button>
-                <Button width="70px" onClick={() => {
-                    if (window.confirm("모든 메모를 삭제합니다.")) {
-                        (async () => {
-                            const { data } = await axios.delete("/");
-                            setMemoList([]);
-                            setSelectedList(new Array(data.length).fill(false))
-                        })()
-                    }
-                }}>
+                <Button width="70px" onClick={() => handleDeleteAll()}>
                     <GiMagicBroom />
                     <br /><span style={{fontSize: "10px"}}>delete all</span>
                 </Button>
@@ -80,11 +106,7 @@ const MemoManagerPage = () => {
         {
             memoList.map((memo, idx) => <Flex
                     key={memo.idx}
-                    onClick={() => setSelectedList(prev => {
-                        const cur = [...prev]
-                        cur[idx] = !cur[idx]
-                        return cur
-                    })}
+                    onClick={() => handleSelect(idx)}
                     flexDirection="column"
                     border= {`${selectedList[idx]? "2px":"1px"} solid ${selectedList[idx]? "#777":"#cccccc"}`}
                     p="10px"

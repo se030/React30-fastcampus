@@ -23,11 +23,26 @@ const MemoTrashPage = () => {
                     alert("복원 성공");
                     loadTrashList();
                 } catch (e) {
-                    alert((e as any).response.data.msg)
+                    alert(`복원 실패
+                    ${(e as any).response.data.msg}`)
                 }
             })()
         }
     }, [])
+    const handleEmpty = () => {
+        if (window.confirm("휴지통을 비웁니다.")) {
+            (async() => {
+                try {
+                    const { data } = await axios.delete("/trash");
+                    alert("삭제 성공");
+                    loadTrashList();
+                } catch (e) {
+                    alert(`삭제 실패
+                    ${(e as any).response.data.msg}`)
+                }
+            })()
+        }
+    }
 
     useEffect(() => {
         loadTrashList();
@@ -37,15 +52,7 @@ const MemoTrashPage = () => {
             <Button onClick={() => navigate("/")}>
                 <IoMdArrowBack />
             </Button>
-            <Button onClick={() => {
-                if (window.confirm("휴지통을 비웁니다.")) {
-                    (async() => {
-                        const { data } = await axios.delete("/trash");
-                        alert("삭제 성공");
-                        loadTrashList();
-                    })()
-                }
-            }}>
+            <Button onClick={() => handleEmpty()}>
                 <GiMagicBroom />
             </Button>
         </Flex>

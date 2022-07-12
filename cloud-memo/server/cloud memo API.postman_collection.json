@@ -218,83 +218,6 @@
 			]
 		},
 		{
-			"name": "삭제된 메모 가져오기",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/trash",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"trash"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "삭제된 메모 가져오기(성공)",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/trash",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"trash"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Access-Control-Allow-Origin",
-							"value": "*"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "101"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"65-bLG2qJ8KkFeJBgxIJ1G6oz2QE2c\""
-						},
-						{
-							"key": "Date",
-							"value": "Sun, 10 Jul 2022 23:57:26 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [],
-					"body": "[\n    {\n        \"content\": \"2\",\n        \"created_at\": 1657496772730,\n        \"last_modified\": 1657496772730,\n        \"deleted_at\": 1657497363076\n    }\n]"
-				}
-			]
-		},
-		{
 			"name": "모든 메모 삭제하기",
 			"request": {
 				"method": "DELETE",
@@ -377,14 +300,14 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/100",
+					"raw": "http://localhost:8080/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"100"
+						"1"
 					]
 				}
 			},
@@ -1062,6 +985,319 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"rs\": true\n}"
+				}
+			]
+		},
+		{
+			"name": "삭제된 메모 가져오기",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/trash",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"trash"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "삭제된 메모 가져오기(성공)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/trash",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"trash"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "101"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"65-bLG2qJ8KkFeJBgxIJ1G6oz2QE2c\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 10 Jul 2022 23:57:26 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"content\": \"2\",\n        \"created_at\": 1657496772730,\n        \"last_modified\": 1657496772730,\n        \"deleted_at\": 1657497363076\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "삭제된 메모 복원하기",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/trash/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"trash",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "삭제된 메모 복원하기(성공)",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/trash/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"trash",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "44"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2c-0r5eIOfizHHRk/ILDCTXeh6+aBw\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 12 Jul 2022 12:53:03 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"rs\": \"true\",\n    \"msg\": \"복원되었습니다.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "전체 삭제 메모 영구 삭제하기",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/trash/0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"trash",
+						"0"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "전체 메모 영구 삭제하기(성공)",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/trash",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"trash"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "50"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"32-KSc/dWLxQUMz+8rbM3DZBAXAxoc\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 12 Jul 2022 12:54:28 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"rs\": \"true\",\n    \"msg\": \"영구삭제되었습니다.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "삭제 메모 영구 삭제하기",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/trash/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"trash",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "삭제 메모 영구 삭제하기(성공)",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/trash/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"trash",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "50"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"32-KSc/dWLxQUMz+8rbM3DZBAXAxoc\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 12 Jul 2022 12:54:13 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"rs\": \"true\",\n    \"msg\": \"영구삭제되었습니다.\"\n}"
 				}
 			]
 		}

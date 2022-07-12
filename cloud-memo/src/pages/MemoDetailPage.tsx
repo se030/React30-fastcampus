@@ -16,6 +16,33 @@ const MemoDetailPage = () => {
     const { id } = useParams();
     const [ memo, setMemo ] = useState<Memo | null>(null)
     const [ content, setContent ] = useState<string>()
+    const handleSave = () => {
+        (async () => {
+            try {
+                const { data } = await axios.put(`/${id}`, {
+                    content: content
+                });
+                alert("수정 성공");
+                navigate("/");
+            } catch (e) {
+                alert(`수정 실패
+                ${(e as any).response.data.msg}`)
+            }
+        })()
+    }
+    const handleDelete = () => {
+        if (window.confirm("정말 삭제하시겠습니까?")) 
+            (async () => {
+                try {
+                    const { data } = await axios.delete(`/${id}`);
+                    alert("삭제 성공");
+                    navigate("/");
+                } catch (e) {
+                    alert(`삭제 실패
+                    ${(e as any).response.data.msg}`)
+                }
+            })()
+    }
     useEffect(() => {
         (async () => {
             const { data } = await axios.get(`/${id}`);
@@ -43,33 +70,10 @@ const MemoDetailPage = () => {
             modified: {new Date(memo.last_modified).toLocaleString()}
         </Box>
         <Flex justifyContent="flex-end">
-            <Button onClick={() => {
-                try {
-                    (async () => {
-                        const { data } = await axios.put(`/${id}`, {
-                            content: content
-                        });
-                        alert("수정 성공");
-                        navigate("/");
-                    })()
-                } catch (e) {
-                    alert((e as any).response.data.msg);
-                }
-            }} margin="5px 0px 5px 5px">
+            <Button onClick={() => handleSave()} margin="5px 0px 5px 5px">
                 <GoCloudUpload />
             </Button>
-            <Button onClick={() => {
-                if (window.confirm("정말 삭제하시겠습니까?")) 
-                    (async () => {
-                        try {
-                            const { data } = await axios.delete(`/${id}`);
-                            alert("삭제 성공");
-                            navigate("/");
-                        } catch (e) {
-                            alert((e as any).response.data.msg)
-                        }
-                    })()
-            }} margin="5px 0px 5px 5px">
+            <Button onClick={() => handleDelete()} margin="5px 0px 5px 5px">
                 <GoTrashcan />
             </Button>
         </Flex>
