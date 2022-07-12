@@ -193,15 +193,15 @@
 						},
 						{
 							"key": "Content-Length",
-							"value": "33"
+							"value": "44"
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"21-uoEHDdWSy6yE5i62klEmrZwV5mA\""
+							"value": "W/\"2c-3NDYghH6OAXe1ihPK/aBMT6SGAg\""
 						},
 						{
 							"key": "Date",
-							"value": "Sun, 10 Jul 2022 23:57:06 GMT"
+							"value": "Tue, 12 Jul 2022 00:19:12 GMT"
 						},
 						{
 							"key": "Connection",
@@ -213,7 +213,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"msg\": \"잘못된 id 입니다.\"\n}"
+					"body": "{\n    \"rs\": false,\n    \"msg\": \"잘못된 id 입니다.\"\n}"
 				}
 			]
 		},
@@ -347,15 +347,15 @@
 						},
 						{
 							"key": "Content-Length",
-							"value": "32"
+							"value": "44"
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"20-A7nvKTZZ6MdWm9avGJuE0gIHrMA\""
+							"value": "W/\"2c-ZIpTS4Dxwv8WUIjghCr956yW+UU\""
 						},
 						{
 							"key": "Date",
-							"value": "Mon, 11 Jul 2022 00:00:20 GMT"
+							"value": "Tue, 12 Jul 2022 00:16:27 GMT"
 						},
 						{
 							"key": "Connection",
@@ -367,7 +367,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"msg\": \"삭제되었습니다.\"\n}"
+					"body": "{\n    \"rs\": \"true\",\n    \"msg\": \"삭제되었습니다.\"\n}"
 				}
 			]
 		},
@@ -395,14 +395,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/1",
+							"raw": "http://localhost:8080/0",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"1"
+								"0"
 							]
 						}
 					},
@@ -424,15 +424,15 @@
 						},
 						{
 							"key": "Content-Length",
-							"value": "32"
+							"value": "44"
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"20-A7nvKTZZ6MdWm9avGJuE0gIHrMA\""
+							"value": "W/\"2c-ZIpTS4Dxwv8WUIjghCr956yW+UU\""
 						},
 						{
 							"key": "Date",
-							"value": "Sun, 10 Jul 2022 23:56:03 GMT"
+							"value": "Tue, 12 Jul 2022 00:14:34 GMT"
 						},
 						{
 							"key": "Connection",
@@ -444,7 +444,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"msg\": \"삭제되었습니다.\"\n}"
+					"body": "{\n    \"rs\": \"true\",\n    \"msg\": \"삭제되었습니다.\"\n}"
 				},
 				{
 					"name": "메모 삭제하기(실패)",
@@ -481,15 +481,15 @@
 						},
 						{
 							"key": "Content-Length",
-							"value": "33"
+							"value": "44"
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"21-uoEHDdWSy6yE5i62klEmrZwV5mA\""
+							"value": "W/\"2c-3NDYghH6OAXe1ihPK/aBMT6SGAg\""
 						},
 						{
 							"key": "Date",
-							"value": "Sun, 10 Jul 2022 23:56:19 GMT"
+							"value": "Tue, 12 Jul 2022 00:15:26 GMT"
 						},
 						{
 							"key": "Connection",
@@ -501,7 +501,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"msg\": \"잘못된 id 입니다.\"\n}"
+					"body": "{\n    \"rs\": false,\n    \"msg\": \"잘못된 id 입니다.\"\n}"
 				}
 			]
 		},
@@ -512,7 +512,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"content\": \"\"\n}",
+					"raw": "{\n    \"content\": \"new\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -642,15 +642,15 @@
 						},
 						{
 							"key": "Content-Length",
-							"value": "53"
+							"value": "64"
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"35-DN1lnsBZ+XDcjC4hgTk3ZT/cwA8\""
+							"value": "W/\"40-K+e3RCg0QwriI6kjii18dGI7XP4\""
 						},
 						{
 							"key": "Date",
-							"value": "Sun, 10 Jul 2022 23:54:48 GMT"
+							"value": "Tue, 12 Jul 2022 00:15:56 GMT"
 						},
 						{
 							"key": "Connection",
@@ -662,7 +662,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"msg\": \"메모 내용이 올바르지 않습니다.\"\n}"
+					"body": "{\n    \"rs\": false,\n    \"msg\": \"메모 내용이 올바르지 않습니다.\"\n}"
 				}
 			]
 		},
@@ -673,7 +673,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"content\": \"modified\"\n}",
+					"raw": "{\n    \"content\": \"\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -681,14 +681,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/5",
+					"raw": "http://localhost:8080/100",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"5"
+						"100"
 					]
 				}
 			},
@@ -803,15 +803,15 @@
 						},
 						{
 							"key": "Content-Length",
-							"value": "53"
+							"value": "64"
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"35-DN1lnsBZ+XDcjC4hgTk3ZT/cwA8\""
+							"value": "W/\"40-K+e3RCg0QwriI6kjii18dGI7XP4\""
 						},
 						{
 							"key": "Date",
-							"value": "Sun, 10 Jul 2022 23:58:07 GMT"
+							"value": "Tue, 12 Jul 2022 00:17:49 GMT"
 						},
 						{
 							"key": "Connection",
@@ -823,7 +823,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"msg\": \"메모 내용이 올바르지 않습니다.\"\n}"
+					"body": "{\n    \"rs\": false,\n    \"msg\": \"메모 내용이 올바르지 않습니다.\"\n}"
 				},
 				{
 					"name": "메모 수정하기(실패_id)",
@@ -832,7 +832,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"content\": \"modified\"\n}",
+							"raw": "{\n    \"content\": \"\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -840,14 +840,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/5",
+							"raw": "http://localhost:8080/100",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"5"
+								"100"
 							]
 						}
 					},
@@ -869,15 +869,15 @@
 						},
 						{
 							"key": "Content-Length",
-							"value": "33"
+							"value": "44"
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"21-uoEHDdWSy6yE5i62klEmrZwV5mA\""
+							"value": "W/\"2c-3NDYghH6OAXe1ihPK/aBMT6SGAg\""
 						},
 						{
 							"key": "Date",
-							"value": "Sun, 10 Jul 2022 23:59:34 GMT"
+							"value": "Tue, 12 Jul 2022 00:18:25 GMT"
 						},
 						{
 							"key": "Connection",
@@ -889,7 +889,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"msg\": \"잘못된 id 입니다.\"\n}"
+					"body": "{\n    \"rs\": false,\n    \"msg\": \"잘못된 id 입니다.\"\n}"
 				}
 			]
 		},
@@ -946,15 +946,15 @@
 						},
 						{
 							"key": "Content-Length",
-							"value": "12"
+							"value": "34"
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"c-UOs8wD1TVPpdN0CnZ7AJ7zg48Wc\""
+							"value": "W/\"22-GHHRpxO0//NleR+poVPx77qMrm4\""
 						},
 						{
 							"key": "Date",
-							"value": "Sun, 10 Jul 2022 23:58:39 GMT"
+							"value": "Tue, 12 Jul 2022 00:13:21 GMT"
 						},
 						{
 							"key": "Connection",
@@ -966,7 +966,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "\"auto saved\""
+					"body": "{\n    \"rs\": true,\n    \"content\": \"auto saved\"\n}"
 				}
 			]
 		},
