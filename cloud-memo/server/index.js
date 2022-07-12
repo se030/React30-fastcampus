@@ -8,8 +8,8 @@ app.use(cors())
 
 const data = JSON.parse(fs.readFileSync("data.json"), "utf-8");
 const save = () => fs.writeFileSync("data.json", JSON.stringify(data), "utf-8");
-const isValidId = (id, res) => {
-    if (isNaN(id) || id < 0 || data.length <= id) {
+const isValidId = (id, res, trash=false) => {
+    if (isNaN(id) || id < 0 || data.length <= id || (trash && !data[id].deleted_at)) {
         res.status(400).json({
             "rs": false,
             "msg": "잘못된 id 입니다."
@@ -59,6 +59,18 @@ app.delete('/', (req, res) => {
         msg: "삭제되었습니다."
     })
 })
+app.delete('/trash/:id', (req, res) => {
+    const id = parseInt(req.params.id, res);
+    if (isValidId(id, res, true)) {
+        data.splice(id, 1);
+        data.forEach((memo, idx) => memo.idx = idx)
+        save()
+        res.json({
+            rs: "true", 
+            msg: "영구삭제되었습니다."
+        })
+    }
+})
 app.delete('/:id', (req, res) => {
     const id = parseInt(req.params.id, res);
     if (isValidId(id, res)) {
@@ -75,12 +87,13 @@ app.post('/', (req, res) => {
     const { content } = req.body;
     if (isValidContent(content, res)) {
         data.push({
+            idx: data.length,
             content,
             created_at: Date.now(),
             last_modified: Date.now(),
             deleted_at: null
         })
-        res.json(data)
+        res.json(data[data.length-1])
         save()
     }
 })
@@ -94,6 +107,17 @@ app.post('/temp', (req, res) => {
     }
 })
 
+app.put('/trash/:id', (req, res) => {
+    const id = parseInt(req.params.id, res);
+    if (isValidId(id, res, true)) {
+        data[id].deleted_at = null
+        save()
+        res.json({
+            rs: "true", 
+            msg: "복원되었습니다."
+        })
+    }
+})
 app.put('/:id', (req, res) => {
     const id = parseInt(req.params.id, res);
     const { content } = req.body;

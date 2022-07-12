@@ -512,7 +512,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"content\": \"new\"\n}",
+					"raw": "{\n    \"content\": \"3\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -596,7 +596,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "[\n    {\n        \"content\": \"1\",\n        \"created_at\": 1657496765965,\n        \"last_modified\": 1657496765965,\n        \"deleted_at\": null\n    },\n    {\n        \"content\": \"2\",\n        \"created_at\": 1657496772730,\n        \"last_modified\": 1657496772730,\n        \"deleted_at\": null\n    },\n    {\n        \"content\": \"3\",\n        \"created_at\": 1657496777455,\n        \"last_modified\": 1657496777455,\n        \"deleted_at\": null\n    }\n]"
+					"body": "{\n    \"content\": \"3\",\n    \"created_at\": 1657591221027,\n    \"last_modified\": 1657591221027,\n    \"deleted_at\": null\n}"
 				},
 				{
 					"name": "메모 생성하기(실패)",
