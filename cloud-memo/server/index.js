@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json())
 app.use(cors())
 
-const data = JSON.parse(fs.readFileSync("data.json"), "utf-8");
+let data = JSON.parse(fs.readFileSync("data.json"), "utf-8");
 const save = () => fs.writeFileSync("data.json", JSON.stringify(data), "utf-8");
 const isValidId = (id, res, trash=false) => {
     if (isNaN(id) || id < 0 || data.length <= id || (trash && !data[id].deleted_at)) {
@@ -57,6 +57,15 @@ app.delete('/', (req, res) => {
     res.json({
         rs: "true", 
         msg: "삭제되었습니다."
+    })
+})
+app.delete('/trash', (req, res) => {
+    data = data.filter(memo => !memo.deleted_at);
+    data.forEach((memo, idx) => memo.idx = idx);
+    save();
+    res.json({
+        rs: "true", 
+        msg: "영구삭제되었습니다."
     })
 })
 app.delete('/trash/:id', (req, res) => {

@@ -3,7 +3,6 @@ import MainPage from './pages/MainPage';
 import MemoDetailPage from './pages/MemoDetailPage';
 import MemoManagerPage from './pages/MemoManagerPage';
 import MemoTrashPage from './pages/MemoTrashPage';
-import MemoWritePage from './pages/MemoWritePage';
 
 const Routes = () => {
     return useRoutes([{
@@ -18,9 +17,6 @@ const Routes = () => {
     }, {
         path: "/:id",
         element: <MemoDetailPage />
-    }, {
-        path: "/:id/edit",
-        element: <MemoWritePage />
     }, {
         path: "/*",
         element: <Navigate to={"/"} replace />

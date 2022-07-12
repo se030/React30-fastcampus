@@ -6,7 +6,6 @@ import Editor from "../components/Editor";
 import { FaCloud } from 'react-icons/fa'
 import { AiOutlineSetting } from 'react-icons/ai'
 import { GoCloudUpload, GoTrashcan } from 'react-icons/go'
-import { GiMagicBroom } from 'react-icons/gi'
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -60,27 +59,18 @@ const MainPage = () => {
             <h1>
                 CloudMemo<FaCloud style={{ color: "#61dbfb" }}/>
             </h1>
-            <Editor value={edit} onChange={setEdit} />
+            <Editor value={edit} onChange={(val) => setEdit(val)} />
             <Button onClick={handleSubmit}>
                 <GoCloudUpload />
             </Button>
-            <Button onClick={() => {}}>
-                <AiOutlineSetting />
-            </Button>
-            <Button onClick={() => navigate("/trash")}>
-                <GoTrashcan />
-            </Button>
-            <Button onClick={() => {
-                if (window.confirm("초기화 하시겠습니까?")) {
-                    (async () => {
-                        const { data } = await axios.delete("/");
-                        setEdit("");
-                        loadMemo();
-                    })()
-                }
-            }}>
-                <GiMagicBroom />
-            </Button>
+            <Box display="inline" position="absolute" right="-5px">
+                <Button onClick={() => navigate("/manager")}>
+                    <AiOutlineSetting />
+                </Button>
+                <Button onClick={() => navigate("/trash")}>
+                    <GoTrashcan />
+                </Button>
+            </Box>
         </div>
         {
             memoList.map((memo) => <Flex

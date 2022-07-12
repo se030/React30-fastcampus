@@ -5,6 +5,7 @@ import Flex from "../components/Flex";
 import Memo from "../interfaces/Memo";
 import { GoReply } from 'react-icons/go'
 import { IoMdArrowBack } from 'react-icons/io'
+import { GiMagicBroom } from 'react-icons/gi'
 import { useNavigate } from "react-router-dom";
 
 const MemoTrashPage = () => {
@@ -32,9 +33,22 @@ const MemoTrashPage = () => {
         loadTrashList();
     }, [])
     return <Flex p="16px" flexDirection="column">
-        <Button onClick={() => navigate("/")} width="fit-content">
-            <IoMdArrowBack />
-        </Button>
+        <Flex justifyContent="space-between">
+            <Button onClick={() => navigate("/")}>
+                <IoMdArrowBack />
+            </Button>
+            <Button onClick={() => {
+                if (window.confirm("휴지통을 비웁니다.")) {
+                    (async() => {
+                        const { data } = await axios.delete("/trash");
+                        alert("삭제 성공");
+                        loadTrashList();
+                    })()
+                }
+            }}>
+                <GiMagicBroom />
+            </Button>
+        </Flex>
         {
             trashList.map((memo) => <Flex
                 key={memo.created_at}
@@ -46,9 +60,11 @@ const MemoTrashPage = () => {
                     <div dangerouslySetInnerHTML={{
                     __html: memo.content as string
                     }} />
-                    <Button onClick={() => handleRestore(memo.idx)}>
-                        <GoReply />
-                    </Button>
+                    <div>
+                        <Button backgroundColor="#fff" onClick={() => handleRestore(memo.idx)}>
+                            <GoReply />
+                        </Button>
+                    </div>
             </Flex>)
         }
     </Flex>
