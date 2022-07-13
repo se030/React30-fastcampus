@@ -24,6 +24,10 @@
 
     to restore deleted memos or empty the bin
 
+- url of each memo can be copied and shared
+
+  `react-copy-to-clipboard` and `web-share API`
+
   <br />
 
   ![](demo_1.gif)
